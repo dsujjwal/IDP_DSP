@@ -1,0 +1,903 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{EE3025 IDP Assignment-1}
+\author{Dasari Shree Ujjwal - EE18BTECH11010}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Download all python codes from 
+\begin{lstlisting}
+https://github.com/dsujjwal/IDP_DSP/tree/main/Assignment1/Codes
+\end{lstlisting}
+%
+and latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/dsujjwal/IDP_DSP/tree/main/Assignment1
+\end{lstlisting}
+\section{Question}
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+    
+\item Let
+\begin{align}
+    x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1} \\
+    y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2) \label{eq:1.0.2}
+\end{align}
+Compute
+\begin{align}
+    X(k) \triangleq \sum_{n=0}^{N-1}x(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1
+\end{align}
+and $H(k)$ using $h(n)$.
+\end{enumerate}
+\section{Solution}
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+\item
+For any LTI System, if the Unit Impulse signal is given as the input, then its output is the Impulse response of the system.
+Now, from equation \eqref{eq:1.0.2} we get the Impulse response of the system as :
+\begin{align}
+    h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2)	
+\end{align}
+
+\item DFT of a Input Signal $x(n)$ is :
+\begin{align}
+    X(k) \triangleq \sum_{n=0}^{N-1}x(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1 \label{eq:2.0.2}
+\end{align}
+Similarly, DFT of Impulse Response $h(n)$ is,
+\begin{align}
+    H(k) \triangleq \sum_{n=0}^{N-1}h(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1 \label{eq:2.0.3}
+\end{align}
+The following python code computes the DFT of x(n) and h(n).
+\begin{lstlisting}
+https://github.com/dsujjwal/IDP_DSP/blob/main/Assignment1/Codes/ee18btech11010.py
+\end{lstlisting}
+The plots are in
+\begin{lstlisting}
+https://github.com/dsujjwal/IDP_DSP/tree/main/Assignment1/figs
+\end{lstlisting}
+
+\item
+DFT of x(n) and h(n) using Matrix multiplication method :
+
+
+\begin{align}
+    X(k) \triangleq \sum_{n=0}^{N-1}x(n)e^{-j2\pi kn/N},\quad k=0,1, \ldots, N-1
+\end{align}
+Let us define a matrix 'W', a NxN matrix, such that, 
+\begin{align}
+    DFT(x)= X = W.x  \label{eq:dftx}
+\end{align}
+Here (.) represents the multiplication of Matrix W and vector x. \\
+Every entry of the matrix W is defined as, \\
+\begin{align}
+    W_N^{nk}=e^{-j2\pi kn/N} \\
+\end{align}
+Here n and k are column and row indices of the matrix respectively. \\
+
+Now from equation: \eqref{eq:dftx}, DFT(x) using the DFT matrix is given by,
+\begin{equation}
+ \begin{bmatrix} X(0) \\ X(1) \\ X(2) \\ \vdots \\ X(N-1) \end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+1 & W_N^1& \cdots & W_N^{N-1}\\
+1 & W_N^2 & \cdots & W_N^{2(N-1)}\\
+\vdots & \vdots & \ddots & \vdots \\
+1 & W_N^{N-1} & \cdots &W_N^{(N-1)(N-1)}
+\end{bmatrix}
+\begin{bmatrix}
+x(0) \\ x(1) \\ x(2) \\ \vdots \\x(N-1)
+\end{bmatrix}
+\end{equation}
+\bigskip
+Given,  x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1} and N=6\\
+we have,
+\begin{equation}
+\begin{bmatrix} X(0) \\ X(1) \\ X(2) \\ X(3) \\ X(4) \\ X(5) \end{bmatrix}
+=
+\begin{bmatrix}
+1 +2+3+4+2+1 \\ 1+ (2)e^{-j\pi /3} + ... + (1)e^{-j5\pi /3}\\ 1 + (2)e^{-2j\pi /3} + ... +(1)(e^{-2j5\pi /3}\\ 1 + (2)e^{-3j\pi /3} + ... + (1)e^{-3j5\pi /3}\\ 1 + (2)e^{-4j\pi /3} + ... + (1)e^{-4j5\pi /3}\\ 1 + (2)e^{-5j\pi /3} + ... + (1)e^{-5j5\pi /3}
+\end{bmatrix}
+\end{equation}
+\bigskip
+On Solving we get,
+\begin{align}
+    X(0)= 13 + 0j \\
+    X(1)= -4 - 1.732j \\
+    X(2)= 1 + 0j \\
+    X(3)= -1 + 0j \\
+    X(4)= 1 + 0j \\
+    X(5)= -4 + 1.732j
+\end{align}
+
+\bigskip
+Similarly, the DFT of h(n) can be defined as,
+\begin{align}
+    DFT(h)= H = W.h  \label{eq:dfth}
+\end{align}
+So, we have,
+\begin{equation}
+ \begin{bmatrix} H(0) \\ H(1) \\ H(2) \\ \vdots \\ H(N-1) \end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+1 & W_N^1& \cdots & W_N^{N-1}\\
+1 & W_N^2 &\cdots & W_N^{2(N-1)}\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & W_N^{N-1} & \cdots &W_N^{(N-1)(N-1)}
+\end{bmatrix}
+\begin{bmatrix}
+h(0) \\ h(1) \\ h(2) \\ \vdots \\ h(N-1)
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix} H(0) \\ H(1) \\ H(2) \\ H(3) \\ H(4) \\ H(5) \end{bmatrix}
+=
+\begin{bmatrix}
+h(0) + h(1) + h(2) + h(3) + h(4) + h(5) \\h(0) + h(1)e^{-j\pi /3} + ... + h(5)e^{-j5\pi /3}\\h(0) + h(1)e^{-2j\pi /3} + ... + h(5)e^{-2j5\pi /3}\\h(0) + h(1)e^{-3j\pi /3} + ... + h(5)e^{-3j5\pi /3}\\
+h(0) + h(1)e^{-4j\pi /3} + ... + h(5)e^{-4j5\pi /3}\\h(0) + h(1)e^{-5j\pi /3} + ... + h(5)e^{-5j5\pi /3}
+\end{bmatrix}
+\end{equation}
+\bigskip
+ We know from above that,
+\begin{align}
+     h(n) = \delta(n) + \delta(n-2) - \frac{1}{2}h(n-1) 
+\end{align}
+for N=6,
+\begin{align}
+     h(n) = \cbrak{\underset{\uparrow}{1},-0.5,1.25,-0.625,0.3125,-0.15625} 
+\end{align}
+Therefore, on solving we get,
+\begin{align}
+    H(0) = 1.28125 + 0j,\\
+    H(1) = 0.515625 - 0.5142026j,\\
+    H(2) = -0.078125 + 1.109595j,\\
+    H(3) = 3.84375 + 0j,\\
+    H(4) = -0.078125 - 1.109595j.\\
+    H(5) = 0.515625 + 0.51420256j
+\end{align}
+We can observe that the values of X and H are same as the values that we obtained from the plots.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{x.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Xmag.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Hmag.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{h.png}
+    \label{figs}
+\end{figure}
+\vspace{1cm}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=9.5cm]{Xpha.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Hpha.png}
+    \label{figs}
+\end{figure}
+
+
+
+
+\end{enumerate}
+
+\section{8 Point FFT}
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+\item Properties of $W_{N}$
+\begin{enumerate}
+\item Property-1 : \[ W^{2}_{N} =  W_{N/2} \]  
+\item Property-2 : \[ W^{k+N/2}_{N} = - W^{k}_{N} \]
+\item Property-3 : \[ W^{k+N/2}_{N/2} = W^{k}_{N/2} \]
+\end{enumerate}
+\item  a N-point DFT is computed as,
+    \begin{align}
+        X(k) = \sum_{n=0}^{N-1} x(n)W^{nk}_{N}, \quad k=0,1, \ldots, N-1
+    \end{align}
+For easier calculations we can Divide the inputs into even and odd indices and using Property-1 (above),
+    \begin{align}
+       X(k) &= \sum_{n=even} x(n)W^{kn}_{N} + \sum_{n=odd} x(n)W^{kn}_{N} \\
+       &= \sum_{m=0}^{N/2 -1} x(2m)W^{2mk}_{N} + \sum_{m=0}^{N/2 -1} x(2m+1)W^{(2m+1)k}_{N} \\
+       &= \sum_{m=0}^{N/2 -1} x(2m)W^{mk}_{N/2} + W^{k}_{N} \sum_{m=0}^{N/2 -1} x(2m+1)W^{mk}_{N/2} 
+    \end{align}
+Observing,
+\begin{align}
+X(k) = {X_{e}(k)}+ W_{N}^k{X_{o}(k)}
+\label{eq:equation3}
+\end{align}
+    
+Now for the given question  N = 6, we can express the even odd DFT's $X_{e}(k)$ , $X_{o}(k)$ in terms of block  matrices,obtaining,
+\begin{equation}
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1) \\ 
+X_{e}(2) \\ 
+X_{o}(0) \\ 
+X_{o}(1) \\ 
+X_{o}(2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+W^{0}_{3} & W^{0}_{3} & W^{0}_{3} & 0 & 0 & 0\\
+W^{0}_{3} & W^{1}_{3} & W^{2}_{3} & 0 & 0 & 0\\
+W^{0}_{3} & W^{2}_{3} & W^{4}_{3} & 0 & 0 & 0\\
+0 & 0 & 0 & W^{0}_{3} & W^{0}_{3} & W^{0}_{3}\\
+0 & 0 & 0 & W^{0}_{3} & W^{1}_{3} & W^{2}_{3}\\
+0 & 0 & 0 & W^{0}_{3} & W^{2}_{3} & W^{4}_{3}
+\end{bmatrix}
+\begin{bmatrix}
+x(0) \\ 
+x(2) \\ 
+x(4) \\ 
+x(1) \\ 
+x(3) \\ 
+x(5) 
+\end{bmatrix}   
+\end{equation}
+    
+Lets take , $F_{N}$ as a N-Point DFT Matrix and $P_{N}$ as an odd-even Permutation Matrix, we can write the above equation as
+\begin{equation}
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1) \\ 
+X_{e}(2) \\ 
+X_{o}(0) \\ 
+X_{o}(1) \\ 
+X_{o}(2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+F_{3} & 0 \\
+0 & F_{3}
+\end{bmatrix}
+P_{6}
+x   
+\label{eq:equation6}
+\end{equation}
+where
+\begin{equation}
+P_{6} 
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 1 & 0\\
+0 & 1 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 1
+\end{bmatrix} 
+\end{equation}
+and 
+\begin{equation}
+P_{6}x
+=
+P_{6}
+\begin{bmatrix}
+x(0) \\ 
+x(1) \\ 
+x(2) \\ 
+x(3) \\ 
+x(4) \\ 
+x(5) 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x(0) \\ 
+x(2) \\ 
+x(4) \\ 
+x(1) \\ 
+x(3) \\ 
+x(5) 
+\end{bmatrix}   
+\end{equation}
+Now,using \eqref{eq:equation3} we can formulate  $X(k)$ interms of $X_{e}(k)$ and $X_{o}(k)$
+\begin{equation}
+\begin{bmatrix}
+X(0) \\ 
+X(1) \\ 
+X(2) \\ 
+X(3) \\ 
+X(4) \\ 
+X(5) 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 & W^{0}_{6} & 0 & 0\\
+0 & 1 & 0 &  0 & W^{1}_{6} & 0\\
+0 & 0 & 1 & 0 & 0 & W^{2}_{6}\\
+1 & 0 & 0 & W^{3}_{6} & 0 & 0\\
+0 & 1 & 0 & 0 & W^{4}_{6} & 0\\
+0 & 0 & 1 & 0 & 0 & W^{5}_{6}
+\end{bmatrix}
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1) \\ 
+X_{e}(2) \\ 
+X_{o}(0) \\ 
+X_{o}(1) \\ 
+X_{o}(2)
+\end{bmatrix}
+\label{eq:equation4}
+\end{equation}
+Let $I_{3}$ to be 3x3 identity matrix and $D_{N} = diag(1,W_{N},W_{N}^{2},....,W_{N}^{N-1})$ .accordingly we get  $D_{\frac{N}{2}} = diag(1,W_{N},W_{N}^{2},....,W_{N}^{\frac{N}{2} -1})$.so  $D_{3}$ will be,
+\begin{equation}
+D_{3}=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & W^{1}_{6} & 0 \\
+0 & 0 & W^{2}_{6}
+\end{bmatrix}
+\end{equation}
+Using Property-2, Equation \eqref{eq:equation4} gets expressed  in terms of   $D_{3}$ and $I_{3}$ as,
+\begin{equation}
+X
+=
+\begin{bmatrix}
+X(0) \\ 
+X(1) \\ 
+X(2) \\ 
+X(3) \\ 
+X(4) \\ 
+X(5) 
+\end{bmatrix}
+=
+\begin{bmatrix}
+I_{3} & D_{3} \\
+I_{3} & -D_{3}
+\end{bmatrix}
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1) \\ 
+X_{e}(2) \\ 
+X_{o}(0) \\ 
+X_{o}(1) \\ 
+X_{o}(2)
+\end{bmatrix}
+\label{eq:equation5}
+\end{equation}
+Using Eq \eqref{eq:equation5} and Eq \eqref{eq:equation6} we obtain
+\begin{equation}
+X
+=
+\begin{bmatrix}
+I_{3} & D_{3} \\
+I_{3} & -D_{3}
+\end{bmatrix}
+\begin{bmatrix}
+F_{3} & 0 \\
+0 & F_{3}
+\end{bmatrix}
+P_{6}
+x 
+\label{eq:equation7}
+\end{equation}
+we know  $X = F_{6}x$ for N = 6 hence we obtain $F_{6}$ as ;
+\begin{equation}
+\implies 
+F_{6}
+=
+\begin{bmatrix}
+I_{3} & D_{3} \\
+I_{3} & -D_{3}
+\end{bmatrix}
+\begin{bmatrix}
+F_{3} & 0 \\
+0 & F_{3}
+\end{bmatrix}
+P_{6}
+\end{equation}
+above approach can be used for any  arbitary $N$ , lets take a N-point DFT Matrix and express it  in terms of N/2-point DFT Matrix as
+\begin{equation} 
+F_{N}
+=
+\begin{bmatrix}
+I_{N/2} & D_{N/2} \\
+I_{N/2} & -D_{N/2}
+\end{bmatrix}
+\begin{bmatrix}
+F_{N/2} & 0 \\
+0 & F_{N/2}
+\end{bmatrix}
+P_{N}
+\label{eq:equation8}
+\end{equation}
+\item Now, for any  $N = 2^{m}$ where $m \in \mathbb{Z^{+}}$  we can recursively breakdown N/2 point DFT Matrix to N/4 point DFT Matrix . so on until we reach 2-point DFT Matrix.for N = 8, we can break it down using Eq \eqref{eq:equation8} as follows,
+\begin{equation}
+F_{8}=
+\begin{bmatrix}
+I_{4} & D_{4} \\
+I_{4} & -D_{4}
+\end{bmatrix}
+\begin{bmatrix}
+F_{4} & 0 \\
+0 & F_{4}
+\end{bmatrix}
+P_{8}
+\end{equation}
+\begin{equation}
+F_{4}=
+\begin{bmatrix}
+I_{2} & D_{2} \\
+I_{2} & -D_{2}
+\end{bmatrix}
+\begin{bmatrix}
+F_{2} & 0 \\
+0 & F_{2}
+\end{bmatrix}
+P_{4}
+\end{equation}
+Finally,we reach  the 2-point DFT Matrix base case 
+\begin{equation}
+F_{2}
+\begin{bmatrix}
+x_{1} \\
+x_{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{1}+x_{2} \\
+x_{1}-x_{2}
+\end{bmatrix}
+\end{equation}
+\item Computing the 8-point DFT using Step by Step visualization of recursion.
+\begin{equation}
+\begin{bmatrix}
+X(0) \\ 
+X(1) \\ 
+X(2) \\ 
+X(3)
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1)\\ 
+X_{e}(2)\\
+X_{e}(3)\\
+\end{bmatrix}
++
+\begin{bmatrix}
+W^{0}_{8} & 0 & 0 & 0\\
+0 & W^{1}_{8} & 0 & 0\\
+0 & 0 & W^{2}_{8} & 0\\
+0 & 0 & 0 & W^{3}_{8}
+\end{bmatrix}
+\begin{bmatrix}
+X_{o}(0) \\ 
+X_{o}(1) \\ 
+X_{o}(2) \\
+X_{o}(3)
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X(4) \\ 
+X(5) \\ 
+X(6) \\ 
+X(7)
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1)\\ 
+X_{e}(2)\\
+X_{e}(3)\\
+\end{bmatrix}
+-
+\begin{bmatrix}
+W^{0}_{8} & 0 & 0 & 0\\
+0 & W^{1}_{8} & 0 & 0\\
+0 & 0 & W^{2}_{8} & 0\\
+0 & 0 & 0 & W^{3}_{8}
+\end{bmatrix}
+\begin{bmatrix}
+X_{o}(0) \\ 
+X_{o}(1) \\ 
+X_{o}(2) \\
+X_{o}(3)
+\end{bmatrix}
+\end{equation}
+Now, 4-point DFT's to 2-point DFT's
+\begin{equation}
+\begin{bmatrix}
+X_{e}(0) \\ 
+X_{e}(1)\\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_{e_{1}}(0) \\ 
+X_{e_{1}}(1)\\ 
+\end{bmatrix}
++
+\begin{bmatrix}
+W^{0}_{4} & 0\\
+0 & W^{1}_{4}
+\end{bmatrix}
+\begin{bmatrix}
+X_{o_{1}}(0) \\ 
+X_{o_{1}}(1) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X_{e}(2) \\ 
+X_{e}(3)\\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_{e_{1}}(0) \\ 
+X_{e_{1}}(1)\\ 
+\end{bmatrix}
+-
+\begin{bmatrix}
+W^{0}_{4} & 0\\
+0 & W^{1}_{4}
+\end{bmatrix}
+\begin{bmatrix}
+X_{o_{1}}(0) \\ 
+X_{o_{1}}(1) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X_{o}(0) \\ 
+X_{o}(1)\\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_{e_{2}}(0) \\ 
+X_{e_{2}}(1)\\ 
+\end{bmatrix}
++
+\begin{bmatrix}
+W^{0}_{4} & 0\\
+0 & W^{1}_{4}
+\end{bmatrix}
+\begin{bmatrix}
+X_{o_{2}}(0) \\ 
+X_{o_{2}}(1) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X_{o}(2) \\ 
+X_{o}(3)\\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+X_{e_{2}}(0) \\ 
+X_{e_{2}}(1)\\ 
+\end{bmatrix}
+-
+\begin{bmatrix}
+W^{0}_{4} & 0\\
+0 & W^{1}_{4}
+\end{bmatrix}
+\begin{bmatrix}
+X_{o_{2}}(0) \\ 
+X_{o_{2}}(1) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+P_{8}
+\begin{bmatrix}
+x(0) \\ 
+x(1) \\ 
+x(2) \\ 
+x(3) \\ 
+x(4) \\ 
+x(5) \\
+x(6) \\
+x(7)
+\end{bmatrix}
+ = 
+\begin{bmatrix}
+x(0) \\ 
+x(2) \\ 
+x(4) \\ 
+x(6) \\
+x(1) \\ 
+x(3) \\ 
+x(5) \\
+x(7)
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+P_{4}
+\begin{bmatrix}
+x(0) \\ 
+x(2) \\ 
+x(4) \\ 
+x(6) \\
+\end{bmatrix}
+ = 
+\begin{bmatrix}
+x(0) \\ 
+x(4) \\ 
+x(2) \\
+x(6)
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+P_{4}
+\begin{bmatrix}
+x(1) \\ 
+x(3) \\ 
+x(5) \\
+x(7)
+\end{bmatrix}
+ = 
+\begin{bmatrix}
+x(1) \\ 
+x(5) \\ 
+x(3) \\ 
+x(7) \\
+\end{bmatrix}
+\end{equation}
+at last we get,
+\begin{equation}
+\begin{bmatrix}
+X_{e_{1}}(0) \\ 
+X_{e_{1}}(1)\\ 
+\end{bmatrix}
+= F_{2}
+\begin{bmatrix}
+x(0) \\ 
+x(4) \\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x(0)+x(4) \\ 
+x(0)-x(4) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X_{o_{1}}(0) \\ 
+X_{o_{1}}(1)\\ 
+\end{bmatrix}
+= F_{2}
+\begin{bmatrix}
+x(2) \\ 
+x(6) \\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x(2)+x(6) \\ 
+x(2)-x(6) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X_{e_{2}}(0) \\ 
+X_{e_{2}}(1)\\ 
+\end{bmatrix}
+= F_{2}
+\begin{bmatrix}
+x(1) \\ 
+x(5) \\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x(1)+x(5) \\ 
+x(1)-x(5) \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{bmatrix}
+X_{o_{2}}(0) \\ 
+X_{o_{2}}(1)\\ 
+\end{bmatrix}
+= F_{2}
+\begin{bmatrix}
+x(3) \\ 
+x(7) \\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x(3)+x(7) \\ 
+x(3)-x(7) \\ 
+\end{bmatrix}
+\end{equation}
+So, hence we can find the N point DFT using the above equations.
+
+\item
+Example problem:
+Let x(n) be a input signal,
+\begin{align}
+    x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1} 
+\end{align}
+Now to compute 8-point DFT, N should be 8. \\
+$\because$ For input signal N=6.\\
+So for N=8 we zero-pad the input signal with 2 zeros.\\
+\begin{align}
+    \implies x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1,0,0} 
+\end{align}
+The 8-point FFT algorithm to compute the fourier transform of x(n) and h(n) is in the following python code.
+\begin{lstlisting}
+https://github.com/dsujjwal/IDP_DSP/blob/main/Assignment1/Codes/ee18btech11010_fft.py
+\end{lstlisting}
+\bigskip
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{x_fft.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{X_fftmag.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{H_magfft.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{h_fft.png}
+    \label{figs}
+\end{figure}
+\vspace{1cm}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=9.5cm]{X_phasefft.png}
+    \label{figs}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{H_fftphase.png}
+    \label{figs}
+\end{figure}
+
+The following C program computes the 8-point FFT.
+\begin{lstlisting}
+https://github.com/dsujjwal/IDP_DSP/blob/main/Assignment1/Codes/ee18btech11010_fft.c
+\end{lstlisting}
+
+\end{enumerate}
+\end{document}
